@@ -1,0 +1,58 @@
+classes:
+  - class: Typological
+    package: bld.example
+    imports:
+      - java.math.BigInteger
+      - java.math.BigDecimal
+    generic-types: 
+      - generic-type: T
+        extends: Number
+      - generic-type: M 
+    extends:
+      - super-class: HashMap
+        generic-types:
+          - generic-type: T
+          - generic-type: M
+    implements:
+      - super-class: Serializable
+      - super-class: Map
+        generic-types:
+          - generic-type: T
+          - generic-type: M
+    annotations:
+      - annotation: Data
+    fields:
+      - field: id
+        level: PROTECTED
+        type: T
+        annotations:
+          - annotation: NotNull
+      - field: description
+        type: String
+        annotations:
+          - annotation: NotNull
+          - annotation: Size
+            properties:
+              - property: max
+                value: 255
+              - property: min
+                value: 0
+  #            - property: excelDate
+  #              annotations:
+  #                - annotation: ExcelDate
+  #                  properties:
+  #                    - property: format
+  #                      value: ColumnDateFormat.DD_MM_YYYY_HH_MM_SS
+  #                    - property: prop
+  #                      mark: DOUBLE
+  #                      value: test  
+                    
+      - field: dateUpdate
+        type: Calendar
+      - field: COD_TIPOLOGICA
+        type: String
+        final: true
+        static: true
+        getter: false
+        setter: false
+        value: A01    
