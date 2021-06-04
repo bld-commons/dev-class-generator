@@ -29,7 +29,7 @@ public class ClassGeneratorUtils {
 	 * @return the files
 	 */
 	public static List<File> getFiles(String pathDir, String extension) {
-		logger.debug(pathDir);
+		logger.info("Path directory: "+pathDir);
 		if (StringUtils.isNotEmpty(extension)) {
 			if (extension.charAt(0) != '.')
 				extension = "." + extension;

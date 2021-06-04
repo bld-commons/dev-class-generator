@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.github.bld-commons</groupId>
-		<artifactId>dev-yaml-class</artifactId>
-		<version>1.0.0</version>
+		<artifactId>dev-class-generator</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>class-generator</artifactId>
 	<description>Demo project for Spring Boot</description>

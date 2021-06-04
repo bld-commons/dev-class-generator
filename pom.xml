@@ -6,7 +6,7 @@
 	<groupId>com.github.bld-commons</groupId>
 	<artifactId>dev-class-generator</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Dev classes by yaml file</name>
 	<url>https://github.com/bld-commons/dev-class-generator</url>
 
@@ -74,8 +74,8 @@
 
 	<modules>
 		<module>class-generator</module>
-		<module>use-plugin</module>
-		<module>typological-plugin</module>
+		<!-- <module>use-plugin</module>
+		<module>typological-plugin</module> -->
 	</modules>
 
 	<dependencyManagement>
