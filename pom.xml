@@ -62,7 +62,7 @@
 		<org.apache.maven.shared-version>3.2.1</org.apache.maven.shared-version>
 		<org.codehaus.plexus-version>3.0.5</org.codehaus.plexus-version>
 		<maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
-		<persistence-common.version>0.0.1-SNAPSHOT</persistence-common.version>
+		<persistence-common.version>1.0.1</persistence-common.version>
 	</properties>
 
 	<scm>
