@@ -14,6 +14,7 @@ import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,30 +25,30 @@ import bld.commons.classes.generator.annotation.FindImport;
 /**
  * The Class ModelMethod.
  */
-public class ModelMethod implements ModelComponentClass{
-	
+public class ModelMethod implements ModelComponentClass {
+
 	/** The name. */
 	@JsonProperty("method")
-	@NotNull(message="The \"field\" field can not be null to define the \"method\" entity")
+	@NotNull(message = "The \"field\" field can not be null to define the \"method\" entity")
 	private String name;
-	
+
 	/** The type. */
 	@FindImport
-	@NotNull(message="The \"type\" field can not be null to define the \"method\" entity")
+	@NotNull(message = "The \"type\" field can not be null to define the \"method\" entity")
 	private String type;
-	
+
 	/** The level type. */
 	@JsonProperty("level")
-	private LevelType levelType; 
-	
+	private LevelType levelType;
+
 	/** The static method. */
 	@JsonProperty("static")
-	private boolean  staticMethod;
-	
+	private boolean staticMethod;
+
 	/** The abstract method. */
 	@JsonProperty("abstract")
-	private boolean  abstractMethod;
-	
+	private boolean abstractMethod;
+
 	/** The annotations. */
 	private Set<ModelAnnotation> annotations;
 
@@ -55,14 +56,13 @@ public class ModelMethod implements ModelComponentClass{
 	@JsonProperty("generic-types")
 	@Valid
 	private List<ModelGenericType> genericTypes;
-	
+
 	/** The parameters. */
 	@Valid
 	private LinkedHashSet<ModelParameter> parameters;
-	
+
 	/** The commands. */
 	private List<String> commands;
-	
 
 	/**
 	 * Instantiates a new model method.
@@ -72,37 +72,31 @@ public class ModelMethod implements ModelComponentClass{
 		init();
 	}
 
-
-
 	/**
 	 * Inits the.
 	 */
 	private void init() {
-		this.annotations=new HashSet<>();
-		this.levelType=LevelType.PUBLIC;
-		this.staticMethod=false;
-		this.abstractMethod=false;
-		this.commands=new ArrayList<>();
-		this.genericTypes=new ArrayList<>();
-		this.parameters=new LinkedHashSet<>();
+		this.annotations = new HashSet<>();
+		this.levelType = LevelType.PUBLIC;
+		this.staticMethod = false;
+		this.abstractMethod = false;
+		this.commands = new ArrayList<>();
+		this.genericTypes = new ArrayList<>();
+		this.parameters = new LinkedHashSet<>();
 	}
 
-	
-	
 	/**
 	 * Instantiates a new model method.
 	 *
 	 * @param name the name
 	 * @param type the type
 	 */
-	public ModelMethod(String name,String type) {
+	public ModelMethod(String name, String type) {
 		super();
 		this.name = name;
 		this.type = type;
 		init();
 	}
-
-
 
 	/**
 	 * Gets the name.
@@ -213,6 +207,16 @@ public class ModelMethod implements ModelComponentClass{
 	}
 
 	/**
+	 * Sets the commands.
+	 *
+	 * @param commands the new commands
+	 */
+	public void setCommands(Set<String> commands) {
+		if (CollectionUtils.isNotEmpty(commands))
+			this.commands = new ArrayList<>(commands);
+	}
+
+	/**
 	 * Gets the generic types.
 	 *
 	 * @return the generic types
@@ -248,9 +252,6 @@ public class ModelMethod implements ModelComponentClass{
 		this.parameters = parameters;
 	}
 
-	
-	
-	
 	/**
 	 * Checks if is abstract method.
 	 *
@@ -269,8 +270,6 @@ public class ModelMethod implements ModelComponentClass{
 		this.abstractMethod = abstractMethod;
 	}
 
-	
-	
 	/**
 	 * To string.
 	 *
@@ -278,39 +277,33 @@ public class ModelMethod implements ModelComponentClass{
 	 */
 	@Override
 	public String toString() {
-		String methodGenericType="";
-		String genericType="";
-		for(ModelGenericType item:this.genericTypes) {
-			if(StringUtils.isNotEmpty(item.getExtend()) && !item.getName().equals("?"))
-				methodGenericType+=","+item.toString();
-			genericType+=","+item.getName();
+		String methodGenericType = "";
+		String genericType = "";
+		for (ModelGenericType item : this.genericTypes) {
+			if (StringUtils.isNotEmpty(item.getExtend()) && !item.getName().equals("?"))
+				methodGenericType += "," + item.toString();
+			genericType += "," + item.getName();
 		}
-		
-		String parameter="";
-		
-		for(ModelParameter item:parameters) {
-			parameter+=","+item.toString();
-			for(ModelGenericType gt:item.getGenericTypes())
-				if(StringUtils.isNotEmpty(gt.getExtend()) && !gt.getName().equals("?"))
-					methodGenericType+=","+gt.toString();
+
+		String parameter = "";
+
+		for (ModelParameter item : parameters) {
+			parameter += "," + item.toString();
+			for (ModelGenericType gt : item.getGenericTypes())
+				if (StringUtils.isNotEmpty(gt.getExtend()) && !gt.getName().equals("?"))
+					methodGenericType += "," + gt.toString();
 		}
-		if(StringUtils.isNotEmpty(parameter))
-			parameter=parameter.substring(1);
-		if(StringUtils.isNotEmpty(methodGenericType))
-			methodGenericType="<"+methodGenericType.substring(1)+">";
+		if (StringUtils.isNotEmpty(parameter))
+			parameter = parameter.substring(1);
+		if (StringUtils.isNotEmpty(methodGenericType))
+			methodGenericType = "<" + methodGenericType.substring(1) + ">";
 		if (StringUtils.isNotEmpty(genericType))
 			genericType = "<" + genericType.substring(1) + ">";
-		String command="\n";
-		for(String item:this.commands)
-			command+=item+"\n";
-		return this.levelType.getLevel()+(this.abstractMethod?" abstract":"")+(this.staticMethod?" static":"")+" "+methodGenericType+" "+this.type+genericType+" "+this.name+"("+parameter+")"+(this.abstractMethod?";":" {"+command+"    }");
+		String command = "\n";
+		for (String item : this.commands)
+			command += item + "\n";
+		return this.levelType.getLevel() + (this.abstractMethod ? " abstract" : "") + (this.staticMethod ? " static" : "") + " " + methodGenericType + " " + this.type + genericType + " " + this.name + "(" + parameter + ")"
+				+ (this.abstractMethod ? ";" : " {" + command + "    }");
 	}
 
-
-	
-	
-	
-	
-	
-	
 }

@@ -29,7 +29,7 @@ public class ConfigurationClassGenerator {
 	 * @throws Exception the exception
 	 */
 	public static Configuration configClassGenerator(String templateDirectory)throws Exception {
-		Configuration configuration=new Configuration(Configuration.VERSION_2_3_30);
+		Configuration configuration=new Configuration(Configuration.VERSION_2_3_31);
 		configuration.setClassLoaderForTemplateLoading(ConfigurationClassGenerator.class.getClassLoader(), templateDirectory);
 		//FileTemplateLoader fileTemplateLoader = new FileTemplateLoader(new File(sourceDirectory));
 		//configuration.setTemplateLoader(fileTemplateLoader);
@@ -50,8 +50,14 @@ public class ConfigurationClassGenerator {
 	 * @return the validator
 	 */
 	private static Validator getValidator() {
-		ValidatorFactory valdiatorFactory = Validation.buildDefaultValidatorFactory(); 
-		return  valdiatorFactory.getValidator();
+		Validator validator=null;
+		try {
+			ValidatorFactory valdiatorFactory = Validation.buildDefaultValidatorFactory();
+			validator=valdiatorFactory.getValidator();
+		} catch (Exception e) {
+			
+		}
+		return  validator;
 	}
 	
 	

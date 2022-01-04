@@ -73,7 +73,7 @@ public class ModelClass implements ModelComponentClass {
 
 	/** The methods. */
 	@Valid
-	private Set<ModelMethod> methods;
+	private LinkedHashSet<ModelMethod> methods;
 
 	/** The costructors. */
 	private LinkedHashSet<ModelConstructor> constructors;
@@ -100,7 +100,7 @@ public class ModelClass implements ModelComponentClass {
 		this.genericTypes = new ArrayList<>();
 		this.extendsClass = new HashSet<>();
 		this.implementsClass = new HashSet<>();
-		this.methods = new HashSet<>();
+		this.methods = new LinkedHashSet<>();
 		this.lombok = false;
 		this.abstractClass = false;
 		this.type = ClassType.CLASS;
@@ -326,7 +326,7 @@ public class ModelClass implements ModelComponentClass {
 	 *
 	 * @return the methods
 	 */
-	public Set<ModelMethod> getMethods() {
+	public LinkedHashSet<ModelMethod> getMethods() {
 		return methods;
 	}
 
@@ -335,7 +335,7 @@ public class ModelClass implements ModelComponentClass {
 	 *
 	 * @param methods the new methods
 	 */
-	public void setMethods(Set<ModelMethod> methods) {
+	public void setMethods(LinkedHashSet<ModelMethod> methods) {
 		this.methods = methods;
 	}
 

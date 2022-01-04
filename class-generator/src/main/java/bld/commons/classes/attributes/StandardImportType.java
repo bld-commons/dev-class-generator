@@ -27,6 +27,8 @@ public enum StandardImportType {
 	/** The Jpa service impl. */
 	JpaServiceImpl("bld.commons.service.JpaServiceImpl"),
 
+	QueryJpql("bld.commons.service.QueryJpql"),
+
 	/** The Big decimal. */
 	BigDecimal("ava.math.BigDecimal"),
 
@@ -38,6 +40,8 @@ public enum StandardImportType {
 
 	/** The Base jpa repository. */
 	BaseJpaRepository("bld.commons.repository.BaseJpaRepository"),
+	
+	BaseJpaService("bld.commons.service.BaseJpaService"),
 
 	/** The List. */
 	List("java.util.List"),
@@ -71,6 +75,8 @@ public enum StandardImportType {
 
 	/** The Annotation service. */
 	AnnotationService("org.springframework.stereotype.Service"),
+
+	AnnotationComponent("org.springframework.stereotype.Component"),
 
 	/** The Annotation not null. */
 	AnnotationNotNull("javax.validation.constraints.NotNull"),
@@ -107,6 +113,12 @@ public enum StandardImportType {
 
 	/** The Annotation version. */
 	AnnotationVersion("javax.persistence.Version"),
+
+	AnnotationQueryBuilder("bld.commons.processor.annotations.QueryBuilder"),
+
+	AnnotationJoinBuilder("bld.commons.processor.annotations.JoinBuilder"),
+
+	AnnotationConditionBuilder("bld.commons.processor.annotations.ConditionBuilder"),
 
 	;
 
