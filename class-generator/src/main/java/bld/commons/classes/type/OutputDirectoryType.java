@@ -16,6 +16,7 @@ public enum OutputDirectoryType {
 	/** The target. */
 	target_generated_source_classes("/target/generated-sources/classes"),
 	
+	/** The target generated source annotations. */
 	target_generated_source_annotations("/target/generated-sources/annotations"),
 	;
 	

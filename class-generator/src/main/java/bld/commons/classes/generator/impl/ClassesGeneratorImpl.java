@@ -48,16 +48,17 @@ public class ClassesGeneratorImpl implements ClassesGenerator {
 	/** The Constant logger. */
 	private final static Logger logger = LoggerFactory.getLogger(ClassesGeneratorImpl.class);
 
+	/** The template. */
 	private Template template = null;
 
 	/**
 	 * Instantiates a new classes generator impl.
 	 *
 	 * @param configuration the configuration
-	 * @throws IOException
-	 * @throws ParseException
-	 * @throws MalformedTemplateNameException
-	 * @throws TemplateNotFoundException
+	 * @throws TemplateNotFoundException the template not found exception
+	 * @throws MalformedTemplateNameException the malformed template name exception
+	 * @throws ParseException the parse exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public ClassesGeneratorImpl(Configuration configuration) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
 		super();
@@ -157,12 +158,26 @@ public class ClassesGeneratorImpl implements ClassesGenerator {
 
 	}
 
+	/**
+	 * Write classes.
+	 *
+	 * @param listModelClasses the list model classes
+	 * @param processingEnv the processing env
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void writeClasses(Collection<ModelClasses> listModelClasses, ProcessingEnvironment processingEnv) throws Exception {
 		for (ModelClasses modelClasses : listModelClasses)
 			writeClass(modelClasses, processingEnv);
 	}
 
+	/**
+	 * Write class.
+	 *
+	 * @param modelClasses the model classes
+	 * @param processingEnv the processing env
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void writeClass(ModelClasses modelClasses, ProcessingEnvironment processingEnv) throws Exception {
 		for (ModelClass modelClass : modelClasses.getClasses()) {
@@ -187,6 +202,12 @@ public class ClassesGeneratorImpl implements ClassesGenerator {
 
 	}
 
+	/**
+	 * Removes the import.
+	 *
+	 * @param modelClass the model class
+	 * @throws Exception the exception
+	 */
 	private void removeImport(ModelClass modelClass) throws Exception {
 		Set<String> imports = new HashSet<>();
 		findAllImport(modelClass, imports);
