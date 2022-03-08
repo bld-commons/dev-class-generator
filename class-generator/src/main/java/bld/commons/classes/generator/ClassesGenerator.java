@@ -7,6 +7,8 @@ package bld.commons.classes.generator;
 
 import java.util.Collection;
 
+import javax.annotation.processing.ProcessingEnvironment;
+
 import bld.commons.classes.model.ModelClasses;
 
 /**
@@ -31,5 +33,25 @@ public interface ClassesGenerator {
 	 * @throws Exception the exception
 	 */
 	public void writeClasses(Collection<ModelClasses> listModelClasses,String basedir) throws Exception;
+
+	
+	/**
+	 * Write class.
+	 *
+	 * @param modelClasses the model classes
+	 * @param processingEnv the processing env
+	 * @throws Exception the exception
+	 */
+	public void writeClass(ModelClasses modelClasses, ProcessingEnvironment processingEnv) throws Exception;
+
+
+	/**
+	 * Write classes.
+	 *
+	 * @param listModelClasses the list model classes
+	 * @param processingEnv the processing env
+	 * @throws Exception the exception
+	 */
+	public void writeClasses(Collection<ModelClasses> listModelClasses, ProcessingEnvironment processingEnv) throws Exception;
 
 }
