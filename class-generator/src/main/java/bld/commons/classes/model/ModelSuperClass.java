@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import bld.commons.classes.generator.annotation.FindImport;
+import bld.commons.classes.generator.utils.ClassGeneratorUtils;
 
 /**
  * The Class ModelSuperClass.
@@ -73,6 +74,10 @@ public class ModelSuperClass implements ModelComponentClass{
 	 */
 	public void setGenericTypes(List<ModelGenericType> genericTypes) {
 		this.genericTypes = genericTypes;
+	}
+	
+	public void addGenericTypes(ModelGenericType... genericTypes) {
+		ClassGeneratorUtils.addElements(this.genericTypes, genericTypes);
 	}
 
 	/**

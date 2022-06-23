@@ -19,6 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import bld.commons.classes.attributes.ClassType;
+import bld.commons.classes.generator.utils.ClassGeneratorUtils;
 
 /**
  * The Class ModelClass.
@@ -122,6 +123,23 @@ public class ModelClass implements ModelComponentClass {
 		this.packageName = packageName;
 		init();
 	}
+	
+	public void addInterface(ModelSuperClass... modelSuperClasses) {
+		ClassGeneratorUtils.addElements(this.implementsClass, modelSuperClasses);
+	}
+	
+	
+	public void addExtendsClass(ModelSuperClass... modelSuperClasses) {
+		ClassGeneratorUtils.addElements(this.extendsClass, modelSuperClasses);
+	}
+	
+	public void addAnnotations(ModelAnnotation...annotations) {
+		ClassGeneratorUtils.addElements(this.annotations, annotations);
+	}
+	
+	public void addFields(ModelField...fields) {
+		ClassGeneratorUtils.addElements(this.fields, fields);
+	}
 
 	/**
 	 * Gets the name.
@@ -167,6 +185,7 @@ public class ModelClass implements ModelComponentClass {
 	public Set<ModelAnnotation> getAnnotations() {
 		return annotations;
 	}
+	
 
 	/**
 	 * Sets the annotations.
