@@ -26,10 +26,14 @@ import org.apache.commons.logging.LogFactory;
  */
 public class ClassGeneratorUtils {
 
+	private static final String ENTITY = "^@(Entity|Entity\\()$";
+
 	/** The Constant logger. */
 	private final static Log logger = LogFactory.getLog(ClassGeneratorUtils.class);
 
 	private final static String extension = ".java";
+	
+	private final static Pattern PATTERN_ENTITY=Pattern.compile(ENTITY);
 
 	/**
 	 * Gets the files.
@@ -73,7 +77,7 @@ public class ClassGeneratorUtils {
 
 	}
 
-	public static Set<String> buildPackage(String pathDir, String prjPackage, String regex, String slash, Set<String> packages) throws Exception {
+	public static Set<String> buildPackage(String pathDir, String prjPackage, String regex, String slash, Set<String> packages,Set<String>entities) throws Exception {
 
 		Pattern pattern = Pattern.compile(regex);
 		if (packages == null)
@@ -86,26 +90,31 @@ public class ClassGeneratorUtils {
 				if (!file.isDirectory() && extension != null && file.getPath().endsWith(extension)) {
 					BufferedReader read = new BufferedReader(new FileReader(file));
 					String line = null;
-					Set<String> complieds = new HashSet<>();
+					Set<String> compileds = new HashSet<>();
 					while ((line = read.readLine()) != null) {
 						Matcher matcher = pattern.matcher(line);
+						Matcher matcherEntity=PATTERN_ENTITY.matcher(line);
 						while (matcher.find()) {
 							String regexImport = matcher.group();
 							logger.debug("regexImport: " + regexImport);
 							regexImport = regexImport.replace("import", "");
 							regexImport = regexImport.substring(0, regexImport.lastIndexOf(".")).trim().replace(".", slash);
 							if (!packages.contains(regexImport))
-								complieds.add(regexImport);
+								compileds.add(regexImport);
 						}
+						while(matcherEntity.find()) 
+							entities.add(prjPackage.replace(slash, ".")+"."+file.getName().replace(extension, ""));
+						
+							
 					}
 					if (read != null)
 						read.close();
-					logger.debug("--------------------------------import: "+complieds.size()+"---------------------------------------------");
-					for (String complied : complieds) {
-						logger.debug("compile: " + complied);
-						packages.addAll(buildPackage(pathDir, complied, regex, slash, packages));
+					logger.debug("--------------------------------import: "+compileds.size()+"---------------------------------------------");
+					for (String compiled : compileds) {
+						logger.debug("compile: " + compiled);
+						packages.addAll(buildPackage(pathDir, compiled, regex, slash, packages,entities));
 					}
-					packages.addAll(complieds);
+					packages.addAll(compileds);
 				}
 
 			}
