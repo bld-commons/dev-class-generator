@@ -30,21 +30,28 @@ import bld.commons.classes.model.EntityModel;
  */
 public class ClassGeneratorUtils {
 
+	/** The Constant ENTITY. */
 	private static final String ENTITY = "@(Entity|Entity\\()";
 
+	/** The Constant ID. */
 	private static final String ID = "@(Id|EmbeddedId).*?;";
 
+	/** The Constant IMPORT. */
 	private static final String IMPORT = "^import .*?;";
 
 	/** The Constant logger. */
 	private final static Log logger = LogFactory.getLog(ClassGeneratorUtils.class);
 
+	/** The Constant extension. */
 	private final static String extension = ".java";
 
+	/** The Constant PATTERN_ENTITY. */
 	private final static Pattern PATTERN_ENTITY = Pattern.compile(ENTITY);
 
+	/** The Constant PATTERN_ID. */
 	private final static Pattern PATTERN_ID = Pattern.compile(ID);
 
+	/** The Constant PATTERN_IMPORT. */
 	private final static Pattern PATTERN_IMPORT = Pattern.compile(IMPORT);
 
 	/**
@@ -82,6 +89,14 @@ public class ClassGeneratorUtils {
 		return ClassGeneratorUtils.getFiles(pathDir, null);
 	}
 
+	/**
+	 * Adds the elements.
+	 *
+	 * @param <E> the element type
+	 * @param <L> the generic type
+	 * @param list the list
+	 * @param elements the elements
+	 */
 	public static <E, L extends Collection<E>> void addElements(L list, E[] elements) {
 		if (ArrayUtils.isNotEmpty(elements))
 			for (E element : elements)
@@ -89,11 +104,30 @@ public class ClassGeneratorUtils {
 
 	}
 
+	/**
+	 * Entities model.
+	 *
+	 * @param pathDir the path dir
+	 * @param prjPackage the prj package
+	 * @param slash the slash
+	 * @return the sets the
+	 * @throws Exception the exception
+	 */
 	public static Set<EntityModel> entitiesModel(String pathDir, String prjPackage, String slash) throws Exception {
 		return entitiesModel(pathDir, prjPackage, slash, new HashSet<>());
 
 	}
 
+	/**
+	 * Entities model.
+	 *
+	 * @param pathDir the path dir
+	 * @param prjPackage the prj package
+	 * @param slash the slash
+	 * @param entitiesModel the entities model
+	 * @return the sets the
+	 * @throws Exception the exception
+	 */
 	private static Set<EntityModel> entitiesModel(String pathDir, String prjPackage, String slash, Set<EntityModel> entitiesModel) throws Exception {
 		File dir = new File(pathDir + slash + prjPackage.replace(".", slash));
 		if (dir.exists()) {
@@ -148,6 +182,18 @@ public class ClassGeneratorUtils {
 		return entitiesModel;
 	}
 
+	/**
+	 * Builds the package.
+	 *
+	 * @param pathDir the path dir
+	 * @param prjPackage the prj package
+	 * @param regex the regex
+	 * @param slash the slash
+	 * @param packages the packages
+	 * @param entities the entities
+	 * @return the sets the
+	 * @throws Exception the exception
+	 */
 	public static Set<String> buildPackage(String pathDir, String prjPackage, String regex, String slash, Set<String> packages, Set<String> entities) throws Exception {
 
 		Pattern pattern = Pattern.compile(regex);
