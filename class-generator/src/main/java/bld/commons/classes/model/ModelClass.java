@@ -393,6 +393,11 @@ public class ModelClass implements ModelComponentClass {
 	public void setEnumValues(LinkedHashSet<ModelEnumValue> enumValues) {
 		this.enumValues = enumValues;
 	}
+	
+	public void addImport(String imp) {
+		if(StringUtils.isNotBlank(imp))
+			this.imports.add(imp);
+	}
 
 	/**
 	 * To string.
