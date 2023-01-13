@@ -5,20 +5,24 @@
  */
 package bld.commons.classes.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * The Class EntityModel.
  */
 public class EntityModel {
 
+	private static final String IMPORT = "import ";
+
 	/** The name. */
 	private String name;
-	
+
 	/** The package name. */
 	private String packageName;
-	
+
 	/** The imp. */
 	private String imp;
-	
+
 	/** The type id. */
 	private String typeId;
 
@@ -28,7 +32,7 @@ public class EntityModel {
 	 * @return the class name
 	 */
 	public String getClassName() {
-		return this.packageName+"."+this.name;
+		return this.packageName + "." + this.name;
 	}
 
 	/**
@@ -49,7 +53,6 @@ public class EntityModel {
 		this.name = className;
 	}
 
-	
 	/**
 	 * Gets the imp.
 	 *
@@ -65,6 +68,9 @@ public class EntityModel {
 	 * @param imp the new imp
 	 */
 	public void setImp(String imp) {
+		if (StringUtils.isNotBlank(imp) && imp.contains(IMPORT)) {
+			imp=imp.replace(IMPORT, "");
+		}
 		this.imp = imp;
 	}
 
@@ -86,8 +92,6 @@ public class EntityModel {
 		this.typeId = typeId;
 	}
 
-	
-	
 	/**
 	 * Gets the package name.
 	 *
@@ -115,7 +119,5 @@ public class EntityModel {
 	public String toString() {
 		return "EntityModel [className=" + name + ", imp=" + imp + ", typeId=" + typeId + "]";
 	}
-	
-	
-	
+
 }
