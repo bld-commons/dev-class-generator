@@ -6,6 +6,7 @@
 package bld.commons.classes.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -205,13 +206,15 @@ public class ModelMethod implements ModelComponentClass {
 	public void setCommands(List<String> commands) {
 		this.commands = commands;
 	}
-
+	
+	
+	
 	/**
 	 * Sets the commands.
 	 *
 	 * @param commands the new commands
 	 */
-	public void setCommands(Set<String> commands) {
+	public void setCommands(Collection<String> commands) {
 		if (CollectionUtils.isNotEmpty(commands))
 			this.commands = new ArrayList<>(commands);
 	}
