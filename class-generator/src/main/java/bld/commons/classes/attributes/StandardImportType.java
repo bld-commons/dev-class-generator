@@ -64,7 +64,7 @@ public enum StandardImportType {
 	Serializable("java.io.Serializable"),
 
 	/** The Entity manager. */
-	EntityManager("javax.persistence.EntityManager"),
+	EntityManager("jakarta.persistence.EntityManager"),
 
 	/** The Named parameter jdbc template. */
 	NamedParameterJdbcTemplate("org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"),
@@ -82,13 +82,12 @@ public enum StandardImportType {
 	AnnotationComponent("org.springframework.stereotype.Component"),
 
 	/** The Annotation not null. */
-	AnnotationNotNull("javax.validation.constraints.NotNull"),
+	AnnotationNotNull("jakarta.validation.constraints.NotNull"),
 
 	/** The Annotation data. */
 	AnnotationData("lombok.Data"),
-
 	/** The Annotation size. */
-	AnnotationSize("javax.validation.constraints.Size"),
+	AnnotationSize("jakarta.validation.constraints.Size"),
 
 	/** The Annotation transactional. */
 	AnnotationTransactional("org.springframework.transaction.annotation.Transactional"),
@@ -97,7 +96,7 @@ public enum StandardImportType {
 	AnnotationAutowired("org.springframework.beans.factory.annotation.Autowired"),
 
 	/** The Annotation persistence context. */
-	AnnotationPersistenceContext("javax.persistence.PersistenceContext"),
+	AnnotationPersistenceContext("jakarta.persistence.PersistenceContext"),
 
 	/** The Annotation created by. */
 	AnnotationCreatedBy("org.springframework.data.annotation.CreatedBy"),
@@ -112,10 +111,10 @@ public enum StandardImportType {
 	AnnotationLastModifiedDate("org.springframework.data.annotation.LastModifiedDate"),
 
 	/** The Annotation column. */
-	AnnotationColumn("javax.persistence.Column"),
+	AnnotationColumn("jakarta.persistence.Column"),
 
 	/** The Annotation version. */
-	AnnotationVersion("javax.persistence.Version"),
+	AnnotationVersion("jakarta.persistence.Version"),
 
 	/** The Annotation query builder. */
 	AnnotationQueryBuilder("bld.commons.processor.annotations.QueryBuilder"),

@@ -8,8 +8,8 @@ package bld.commons.classes.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * The Class ModelClasses.

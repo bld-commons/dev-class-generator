@@ -8,14 +8,13 @@ package bld.commons.classes.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import bld.commons.classes.generator.annotation.FindImport;
 import bld.commons.classes.generator.utils.ClassGeneratorUtils;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * The Class ModelSuperClass.

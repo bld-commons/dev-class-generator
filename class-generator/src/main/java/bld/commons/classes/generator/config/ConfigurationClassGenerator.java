@@ -5,12 +5,11 @@
  */
 package bld.commons.classes.generator.config;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 /**
  * The Class ConfigurationClassGenerator.

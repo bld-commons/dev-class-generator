@@ -7,14 +7,13 @@ package bld.commons.classes.generator.validator;
 
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import bld.commons.classes.generator.config.ConfigurationClassGenerator;
 import bld.commons.classes.generator.exception.YamlPropertyException;
 import bld.commons.classes.model.ModelClasses;
+import jakarta.validation.ConstraintViolation;
 
 /**
  * The Class ValidatorBuildClass.

@@ -12,9 +12,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -22,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import bld.commons.classes.attributes.LevelType;
 import bld.commons.classes.generator.annotation.FindImport;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * The Class ModelMethod.

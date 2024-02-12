@@ -5,13 +5,13 @@
  */
 package bld.commons.classes.model;
 
-import javax.validation.constraints.NotNull;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import bld.commons.classes.generator.annotation.FindImport;
+import jakarta.validation.constraints.NotNull;
+
 
 /**
  * The Class ModelGenericType.
